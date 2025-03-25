@@ -3,6 +3,7 @@ package employee;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 
 public class FirstHighestSalary {
     static class Employee{
@@ -68,16 +69,24 @@ public class FirstHighestSalary {
                 new Employee(400,"janardhana",9999.90,"kind"),
                 new Employee(500,"Achyuta",19.90,"kind"),
                 new Employee(600,"om",199.90,"kind"),
-                new Employee(700,"Harree",19992.90,"kind"),
+                new Employee(700,"Harree",29992.90,"kind"),
                 new Employee(800,"narayana",19999.90,"kind"),
                 new Employee(900,"narasimhaya",90.90,"kind"),
                 new Employee(1000,"madhava",299.90,"kind"),
                 new Employee(110,"madhusoodhana",39.90,"kind"),
                 new Employee(120,"govind",79.90,"kind")
         );
-        Double firstHighest = employeeList.stream().map(emp -> emp.salary)
-                .sorted(Comparator.reverseOrder()).findFirst().get();
+        Double firstHighest = employeeList.stream().map(emp -> emp.salary).min(Comparator.reverseOrder()).get();
 
         System.out.print(firstHighest);
+        System.out.println();
+        Optional<Double> thirdHighest = employeeList.stream()
+                .map(emp -> emp.salary)
+                .distinct()
+                .sorted(Comparator.reverseOrder())
+                .limit(3)
+                .skip(2)
+                .findFirst();
+        thirdHighest.ifPresent(System.out::println);
     }
 }
