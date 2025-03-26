@@ -1,0 +1,19 @@
+Explanation:
+1) sentence.split(" "): Splits the sentence into an array of words:
+
+["Im", "learning", "Streams", "api", "in", "java"]
+
+2) Arrays.stream(sentence.split(" ")): Converts the array into a Stream of words.
+3) .max(Comparator.comparingInt(String::length)): Finds the longest word based on its length.
+4) .orElse(""): Handles cases where the sentence might be empty (avoiding null).
+
+=========================================================================
+
+String longestWord = Arrays.stream(sentence.split(" "))  // Split sentence into words
+                .max(new Comparator<String>() {
+                    @Override
+                    public int compare(String word1, String word2) {
+                        return Integer.compare(word1.length(), word2.length());
+                    }
+                })
+                .orElse(""); // Handle empty case

@@ -76,7 +76,7 @@ public class FirstHighestSalary {
                 new Employee(110,"madhusoodhana",39.90,"kind"),
                 new Employee(120,"govind",79.90,"kind")
         );
-        Double firstHighest = employeeList.stream().map(emp -> emp.salary).min(Comparator.reverseOrder()).get();
+        Double firstHighest = employeeList.stream().map(emp -> emp.salary).max(Comparator.naturalOrder()).get();
 
         System.out.print(firstHighest);
         System.out.println();
