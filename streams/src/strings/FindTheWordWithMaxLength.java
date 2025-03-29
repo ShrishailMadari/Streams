@@ -11,5 +11,7 @@ public class FindTheWordWithMaxLength {
         System.out.println(string);
         String str = Arrays.stream(sentence.split(" ")).max((w1, w2) -> Integer.compare(w1.length(), w2.length())).get();
         System.out.println(str);
+
+//        Arrays.stream(sentence.split(" ")).sorted()
     }
 }
