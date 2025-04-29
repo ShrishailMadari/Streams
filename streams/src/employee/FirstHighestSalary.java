@@ -76,17 +76,51 @@ public class FirstHighestSalary {
                 new Employee(110,"madhusoodhana",39.90,"kind"),
                 new Employee(120,"govind",79.90,"kind")
         );
-        Double firstHighest = employeeList.stream().map(emp -> emp.salary).max(Comparator.naturalOrder()).get();
 
-        System.out.print(firstHighest);
         System.out.println();
-        Optional<Double> thirdHighest = employeeList.stream()
-                .map(emp -> emp.salary)
+        System.out.println("Finding First Highest Salary: ");
+        findFirstHighestSalary(employeeList);
+        System.out.println();
+        System.out.println("Getting Employee who's With Second Most Salary");
+        findingSecondHighestSalary(employeeList);
+        System.out.println();
+        System.out.println("Finding the third highest Salary:");
+        findingThirdHighestSalary(employeeList);
+        System.out.println();
+        System.out.println("Finding the Employee Whose salary is greater than {N} ");
+        findingEmpWhoseSalIsGreaterThanN(employeeList);
+    }
+
+    private static void findingThirdHighestSalary(List<Employee> employeeList) {
+        Double thirdHighestSalary = employeeList.stream().map(Employee::getSalary)
                 .distinct()
                 .sorted(Comparator.reverseOrder())
                 .limit(3)
                 .skip(2)
-                .findFirst();
-        thirdHighest.ifPresent(System.out::println);
+                .findFirst()
+                .get();
+        System.out.println(thirdHighestSalary);
+    }
+
+
+    private static void findFirstHighestSalary(List<Employee> employeeList) {
+        Double firstHighest = employeeList.stream().map(emp -> emp.salary).max(Comparator.naturalOrder()).get();
+        System.out.println(firstHighest);
+    }
+
+    private static void findingSecondHighestSalary(List<Employee> employeeList) {
+        Double secondHighestSalary = employeeList.stream()
+                .map(Employee::getSalary)
+                .distinct()
+                .sorted(Comparator.reverseOrder())
+                .limit(2)
+                .skip(1)
+                .findFirst().get();
+        System.out.println("Second Highest Salary: "+secondHighestSalary);
+    }
+
+    private static void findingEmpWhoseSalIsGreaterThanN(List<Employee> employeeList) {
+        List<Employee> list = employeeList.stream().filter(emp -> emp.getSalary() > 2000).toList();
+        System.out.print(list+"  ");
     }
 }

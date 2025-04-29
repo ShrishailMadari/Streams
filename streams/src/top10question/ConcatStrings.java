@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 public class ConcatStrings {
     public static void main(String[] args) {
         List<String> list = Arrays.asList("Ravi", "is", "on", "the", "road");
-        String collect = list.stream().collect(Collectors.joining(","));
+        String collect = String.join(",", list);
         System.out.println(collect);
 
 
