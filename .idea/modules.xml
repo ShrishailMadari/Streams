@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/CreationalDP/CreationalDP.iml" filepath="$PROJECT_DIR$/CreationalDP/CreationalDP.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Streams.iml" filepath="$PROJECT_DIR$/.idea/Streams.iml" />
       <module fileurl="file://$PROJECT_DIR$/streams/streams.iml" filepath="$PROJECT_DIR$/streams/streams.iml" />
     </modules>
